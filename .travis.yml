@@ -1,8 +1,11 @@
 language: node_js
 node_js:
-  - '0.10'
+  - '0.12'
 
 # whitelist
 branches:
   only:
     - master
+
+before_script:
+  - printf '[user]\n name = Test User\n email = testemail@domain.com' > ~/.gitconfig
