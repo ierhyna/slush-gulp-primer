@@ -1,6 +1,6 @@
-# Gulp Primer
+# <%= appName %>
 
-A starter Gulp boilerplate for frontend project.
+<%= appDescription %>
 
-Author: [Irina Sokolovskaja](http://github.com/ierhyna)
+Author: [<%= authorName %>](http://github.com/<%= userName %>)
 
