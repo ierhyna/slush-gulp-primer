@@ -40,7 +40,7 @@ var defaults = (function () {
   configFile = path.join(homeDir, '.gitconfig');
   user = {};
 
-  if (require('fs').existsSync(configFile)) {
+  if (fs.existsSync(configFile)) {
     user = require('iniparser').parseSync(configFile).user;
   }
 
@@ -73,8 +73,19 @@ gulp.task('default', function (done) {
     message: 'What is the author email?',
     default: defaults.authorEmail
   }, {
+    type: 'list',
+    name: 'gitTracker',
+    message: 'What git tracker would you like to use?',
+    choices: [{
+      name: 'GitHub',
+      value: 'useGitHub'
+    }, {
+      name: 'Bitbucket',
+      value: 'useBitbucket'
+    }]
+  }, {
     name: 'userName',
-    message: 'What is the github username?',
+    message: 'What is your username at the git tracker?',
     default: defaults.userName
   }, {
     type: 'confirm',
@@ -87,7 +98,12 @@ gulp.task('default', function (done) {
       if (!answers.moveon) {
         return done();
       }
+
       answers.appNameSlug = _.slugify(answers.appName);
+
+      answers.useGitHub = (answers.gitTracker === 'useGitHub') ? true : false;
+      answers.useBitbucket = (answers.gitTracker === 'useBitbucket') ? true : false;
+
       gulp.src(__dirname + '/templates/**')
         .pipe(template(answers))
         .pipe(rename(function (file) {
@@ -109,8 +125,7 @@ gulp.task('default', function (done) {
         var skipInstall = process.argv.slice(2).indexOf('--skip-install') >= 0;
 
         if (skipInstall) {
-          gutil.log('Dependencies installation skipped! ');
-          gutil.log('Run `npm install & bower install` to install dependencies ');
+          gutil.log('Dependencies installation skipped! \n Run', gutil.colors.yellow('`npm install --save && bower install --save`'), 'to install dependencies ');
         }
       });
   });

@@ -5,17 +5,17 @@
   "keywords": [
     "template"
   ],
-  "homepage": "https://github.com/<%= userName %>/<%= appNameSlug %>#readme",
+  "homepage": "http://<% if (useGitHub) { %>github.com<% } else { %>bitbucket.org<% } %>/<%= appNameSlug %>#readme",
   "author": {
     "name": "<%= authorName %>",
-    "homepage": "http://github.com/<%= userName %>"
+    "homepage": "http://<% if (useGitHub) { %>github.com<% } else { %>bitbucket.org<% } %>/<%= userName %>"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/<%= userName %>/<%= appNameSlug %>.git"
+    "url": "git+ssh://git@<% if (useGitHub) { %>github.com<% } else { %>bitbucket.org<% } %>/<%= userName %>/<%= appNameSlug %>.git"
   },
   "bugs": {
-    "url": "https://github.com/<%= userName %>/<%= appNameSlug %>/issues"
+    "url": "https://<% if (useGitHub) { %>github.com<% } else { %>bitbucket.org<% } %>/<%= userName %>/<%= appNameSlug %>/issues"
   },
   "devDependencies": {
     "browser-sync": "^2.9.12",
