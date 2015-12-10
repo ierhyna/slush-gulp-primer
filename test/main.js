@@ -52,7 +52,14 @@ describe('slush-gulp-primer', function() {
           'gulpfile.js',
           'html/index.html',
           'js/script.js',
-          'scss/style.scss'
+          'scss/style.scss',
+          'scss/base/_typo.scss',
+          'scss/layout/_grid.scss',
+          'scss/pages/_home.scss',
+          'scss/components/_menu.scss',
+          'scss/utils/_functions.scss',
+          'scss/utils/_mixins.scss',
+          'scss/utils/_variables.scss'
         ]);
 
         done();

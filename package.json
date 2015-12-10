@@ -21,7 +21,9 @@
     "npm": ">=1.4.3"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "preversion": "npm test",
+    "postversion": "git push"
   },
   "dependencies": {
     "fs": "0.0.2",

@@ -173,7 +173,7 @@ gulp.task('watch', function(){
     gulp.start('js:build');
   });
   watch([path.watch.img], function(event, cb) {
-    gulp.start('images:min');
+    gulp.start('images');
   });
 });
 
