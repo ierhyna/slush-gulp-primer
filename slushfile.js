@@ -38,7 +38,7 @@ var defaults = (function () {
   }
 
   configFile = path.join(homeDir, '.gitconfig');
-  user = {};
+  var user = {};
 
   if (require('fs').existsSync(configFile)) {
     user = require('iniparser').parseSync(configFile).user;
