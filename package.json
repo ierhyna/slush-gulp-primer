@@ -1,0 +1,41 @@
+{
+  "name": "slush-gulp-primer",
+  "description": "Generator for frontend projects: HTML5 boilerplate, folders structure, Gulp tasks (SCSS | JS | Bower | BrowserSync)",
+  "version": "0.0.1",
+  "homepage": "https://github.com/ierhyna/slush-gulp-primer",
+  "author": {
+    "name": "Irina Sokolovskaja",
+    "email": "sokolovskaja.irina@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ierhyna/slush-gulp-primer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ierhyna/slush-gulp-primer/issues"
+  },
+  "license": "MIT",
+  "main": "slushfile.js",
+  "engines": {
+    "node": ">= 0.10.26",
+    "npm": ">=1.4.3"
+  },
+  "scripts": {
+    "test": "echo \"No tests\""
+  },
+  "dependencies": {
+    "gulp": "^3.6.2",
+    "gulp-conflict": "^0.1.1",
+    "gulp-install": "^0.1.4",
+    "gulp-rename": "^1.2.0",
+    "gulp-template": "^0.1.1",
+    "gulp-util": "^3.0.7",
+    "iniparser": "^1.0.5",
+    "inquirer": "^0.8.0",
+    "slush": ">=1.0.0",
+    "underscore.string": "^2.3.3"
+  },
+  "keywords": [
+    "slushgenerator"
+  ]
+}

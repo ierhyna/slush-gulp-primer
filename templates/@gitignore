@@ -1,0 +1,16 @@
+# Logs
+logs
+*.log
+
+# Temp files
+*~
+
+# node-waf configuration
+.lock-wscript
+
+# Dependency directory
+node_modules
+<<<<<<< HEAD
+=======
+bower_components
+>>>>>>> d0aea0169f45c728ca49ebd4f07f9ff0a66d625c
