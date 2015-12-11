@@ -1,11 +1,16 @@
 # Slush Gulp-primer [![Build Status](https://secure.travis-ci.org/ierhyna/slush-gulp-primer.png?branch=master)](https://travis-ci.org/ierhyna/slush-gulp-primer) [![NPM version](https://badge-me.herokuapp.com/api/npm/slush-gulp-primer.png)](http://badges.enytc.com/for/npm/slush-gulp-primer)
 
-> Boilerplate for Gulp-based frontend template with HTML5, Scss, JS
-
+A Slush generator for Gulp-based frontend template. It allows to customize a project, and includes Gulp tasks for HTML, SCSS, JS, Images. It uses also uses Bower and BrowserSync.
 
 ## Getting Started
 
-Install `slush-gulp-primer` globally:
+First, install Slush, if you haven't yet:
+
+```bash
+$ npm install -g slush
+```
+
+Then install `slush-gulp-primer` globally:
 
 ```bash
 $ npm install -g slush-gulp-primer
@@ -16,13 +21,13 @@ $ npm install -g slush-gulp-primer
 Create a new folder for your project:
 
 ```bash
-$ mkdir my-slush-gulp-primer
+$ mkdir my-project
 ```
 
 Run the generator from within the new folder:
 
 ```bash
-$ cd my-slush-gulp-primer && slush gulp-primer
+$ cd my-project && slush gulp-primer
 ```
 
 ## Getting To Know Slush
