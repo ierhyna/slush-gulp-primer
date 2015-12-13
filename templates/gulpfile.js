@@ -141,7 +141,7 @@ gulp.task('images', function() {
 
 // Fonts
 gulp.task('fonts', function() {
-  gulp.src('./fonts/**/*.{ttf,woff,woff2,eof,svg}')
+  gulp.src('./fonts/**/*.{ttf,woff,woff2,eot,svg}')
   .pipe(changed('./dist/fonts')) // only build changed files
   .pipe(gulp.dest('./dist/fonts'));
 });
