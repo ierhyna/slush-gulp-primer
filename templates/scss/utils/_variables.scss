@@ -1,9 +1,11 @@
 // colors
-$color-black: #333;
+$colors: (
+  'black': #333,
+);
 
 // typo
 $font-primary: 'Roboto', sans-serif;
-$font-secondary: 'AzoftSans', sans-serif;
+$font-secondary: 'PT Serif', serif;
 $em-base: 16px;
 
 // media
@@ -14,3 +16,4 @@ $breakpoints: (
   'lg': 1025px,
   'xl': 1200px
 );
+
