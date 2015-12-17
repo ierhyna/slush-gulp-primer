@@ -1,4 +1,4 @@
-# Slush Gulp-primer [![Build Status](https://secure.travis-ci.org/ierhyna/slush-gulp-primer.png?branch=master)](https://travis-ci.org/ierhyna/slush-gulp-primer) [![NPM version](https://badge-me.herokuapp.com/api/npm/slush-gulp-primer.png)](http://badges.enytc.com/for/npm/slush-gulp-primer)
+# Slush Gulp-primer [![Build Status](https://secure.travis-ci.org/ierhyna/slush-gulp-primer.png?branch=master)](https://travis-ci.org/ierhyna/slush-gulp-primer) [![npm version](https://badge.fury.io/js/slush-gulp-primer.svg)](https://badge.fury.io/js/slush-gulp-primer) [![dependencies status](https://david-dm.org/ierhyna/slush-gulp-primer.svg)](https://david-dm.org/ierhyna/slush-gulp-primer)
 
 A Slush generator for Gulp-based frontend template. It allows to customize a project, and includes Gulp tasks for HTML, SCSS, JS, Images. It uses also uses Bower and BrowserSync.
 
