@@ -99,10 +99,14 @@ gulp.task('default', function (done) {
         return done();
       }
 
+      // app variables
       answers.appNameSlug = _.slugify(answers.appName);
-
       answers.useGitHub = (answers.gitTracker === 'useGitHub') ? true : false;
       answers.useBitbucket = (answers.gitTracker === 'useBitbucket') ? true : false;
+
+      // gulp-notify messages
+      answers.gnLine = '<%= error.line %>';
+      answers.gnMessage = '<%= error.message %>';
 
       gulp.src(__dirname + '/templates/**')
         .pipe(template(answers))

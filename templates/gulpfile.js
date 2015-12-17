@@ -94,10 +94,9 @@ gulp.task('html:build', function() {
 gulp.task('style:build', function() {
   gulp.src(path.src.style)
     .pipe(sourcemaps.init())
-    //.pipe(sass().on('error', sass.logError)) // default error handler
     .pipe(sass().on('error', notify.onError({
-      title: 'SCSS error (in line < %= error.line % >)',  // delete spaces
-      message: '< %= error.message % >'  // delete spaces
+      title: 'SCSS error (in line <%= gnLine %>)',
+      message: '<%= gnMessage %>'
     })))
     .pipe(autoprefixer())
     .pipe(production ? minifyCss({keepSpecialComments : 0}) : util.noop())
@@ -111,7 +110,7 @@ gulp.task('js:build', function() {
   gulp.src(path.src.js)
     .pipe(production ? uglify().on('error', notify.onError({
       title: 'JS error',
-      message: '< %= error.message % >' // delete spaces
+      message: '<%= gnMessage %>'
     })) : util.noop())
     .pipe(gulp.dest(path.build.js))
     .pipe(reload({stream: true}));
