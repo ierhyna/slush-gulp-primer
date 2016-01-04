@@ -10,7 +10,7 @@ var
   sourcemaps = require('gulp-sourcemaps'),
   autoprefixer = require('gulp-autoprefixer'),
   uglify =  require('gulp-uglify'),
-  minifyCss = require('gulp-minify-css'),
+  minifyCss = require('gulp-cssnano'),
   imagemin = require('gulp-imagemin'),
   pngquant = require('imagemin-pngquant'),
   changed = require('gulp-changed'),
@@ -99,7 +99,7 @@ gulp.task('style:build', function() {
       message: '<%= gnMessage %>'
     })))
     .pipe(autoprefixer())
-    .pipe(production ? minifyCss({keepSpecialComments : 0}) : util.noop())
+    .pipe(production ? minifyCss() : util.noop())
     .pipe(!production ? sourcemaps.write() : util.noop())
     .pipe(gulp.dest(path.build.style))
     .pipe(reload({stream: true}));
