@@ -48,7 +48,6 @@ describe('slush-gulp-primer', function() {
           '.gitignore',
           '.scss-lint.yml',
           'package.json',
-          'bower.json',
           'gulpfile.js',
           'html/index.html',
           'js/script.js',

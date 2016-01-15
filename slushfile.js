@@ -129,7 +129,7 @@ gulp.task('default', function (done) {
         var skipInstall = process.argv.slice(2).indexOf('--skip-install') >= 0;
 
         if (skipInstall) {
-          gutil.log('Dependencies installation skipped! \n Run', gutil.colors.yellow('`npm install --save && bower install --save`'), 'to install dependencies ');
+          gutil.log('Dependencies installation skipped! \n Run', gutil.colors.yellow('`npm install --save`'), 'to install dependencies ');
         }
       });
   });

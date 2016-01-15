@@ -5,7 +5,6 @@ var
   util = require('gulp-util'),
   ftp = require('vinyl-ftp'),
   rigger = require('gulp-rigger'),
-  concat = require('gulp-concat'),
   sass = require('gulp-sass'),
   sourcemaps = require('gulp-sourcemaps'),
   autoprefixer = require('gulp-autoprefixer'),
@@ -19,7 +18,10 @@ var
   del = require('del'),
   browserSync = require('browser-sync'),
   reload = browserSync.reload,
-  production = !!util.env.production;
+  production = !!util.env.production,
+  browserify = require('browserify'),
+  source = require('vinyl-source-stream'),
+  buffer = require('vinyl-buffer');
 
 var path = {
   build: {
@@ -30,7 +32,7 @@ var path = {
   },
   src: {
     html: 'html/*.html', 
-    js: 'js/*.js',
+    js: 'js/script.js',
     style: 'scss/*.scss',
     img: 'img/**/*.{jpg,jpeg,png,gif,svg}'
   },
@@ -82,7 +84,7 @@ gulp.task('deploy', function() {
 });
 
 // HTML
-gulp.task('html:build', function() {
+gulp.task('build:html', function() {
   gulp.src(path.src.html)
     //.pipe(changed(path.build.html)) // only build changed files
     .pipe(rigger())
@@ -91,7 +93,7 @@ gulp.task('html:build', function() {
 });
 
 // Styles
-gulp.task('style:build', function() {
+gulp.task('build:css', function() {
   gulp.src(path.src.style)
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', notify.onError({
@@ -106,8 +108,14 @@ gulp.task('style:build', function() {
 });
 
 // Scripts
-gulp.task('js:build', function() {
-  gulp.src(path.src.js)
+gulp.task('build:js', function() {
+  return browserify(path.src.js)
+    .bundle().on('error', notify.onError({
+      title: 'JS error',
+      message: '<%= gnMessage %>'
+    }))
+    .pipe(source('bundle.js'))
+    .pipe(buffer())
     .pipe(production ? uglify().on('error', notify.onError({
       title: 'JS error',
       message: '<%= gnMessage %>'
@@ -116,18 +124,8 @@ gulp.task('js:build', function() {
     .pipe(reload({stream: true}));
 });
 
-// Copy depencencies to vendor
-gulp.task('js:vendor', function() {
-  return gulp.src([
-    './bower_components/jquery/dist/jquery.js',
-  ])
-  .pipe(uglify())
-  .pipe(concat('vendor.js'))
-  .pipe(gulp.dest(path.build.js));
-});
-
 // Images
-gulp.task('images', function() {
+gulp.task('build:images', function() {
   gulp.src(path.src.img)
     .pipe(changed(path.build.img)) // only build changed files
     .pipe(imagemin({
@@ -139,7 +137,7 @@ gulp.task('images', function() {
 });
 
 // Fonts
-gulp.task('fonts', function() {
+gulp.task('build:fonts', function() {
   gulp.src('./fonts/**/*.{ttf,woff,woff2,eot,svg}')
   .pipe(changed('./dist/fonts')) // only build changed files
   .pipe(gulp.dest('./dist/fonts'));
@@ -152,27 +150,26 @@ gulp.task('clean', function() {
 
 // Create dist
 gulp.task('build', [
-  'html:build',
-  'js:build',
-  'style:build',
-  'js:vendor',
-  'fonts',
-  'images'
+  'build:html',
+  'build:css',
+  'build:js',
+  'build:fonts',
+  'build:images'
 ]);
 
 // Watch
 gulp.task('watch', function(){
   watch([path.watch.html], function(event, cb) {
-    gulp.start('html:build');
+    gulp.start('build:html');
   });
   watch([path.watch.style], function(event, cb) {
-    gulp.start('style:build');
+    gulp.start('build:css');
   });
   watch([path.watch.js], function(event, cb) {
-    gulp.start('js:build');
+    gulp.start('build:js');
   });
   watch([path.watch.img], function(event, cb) {
-    gulp.start('images');
+    gulp.start('build:images');
   });
 });
 
