@@ -27,6 +27,7 @@
   "devDependencies": {
     "browser-sync": "^2.9.12",
     "browserify": "^13.0.0",
+    "browserify-shim": "^3.8.12",
     "del": "^2.1.0",
     "eslint": "^1.10.1",
     "gulp": "^3.9.0",
@@ -46,5 +47,14 @@
     "vinyl-ftp": "^0.4.5",
     "vinyl-source-stream": "^1.1.0",
     "vinyl-buffer": "^1.0.0"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browser": {},
+  "browserify-shim": {
+    "jquery": "global:$"
   }
 }
