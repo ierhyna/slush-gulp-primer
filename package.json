@@ -1,7 +1,7 @@
 {
   "name": "slush-gulp-primer",
   "description": "Generator for frontend projects: HTML5 boilerplate, folders structure, Gulp tasks (SCSS | JS | BrowserSync | Images)",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "homepage": "https://github.com/ierhyna/slush-gulp-primer",
   "author": {
     "name": "Irina Sokolovskaja",
